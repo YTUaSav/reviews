@@ -8,7 +8,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: #1C2333;
+    background: #1E293B;
     font-family: 'Oswald', sans-serif;
     color: #E5E7EB;
     min-height: 100vh;
@@ -296,20 +296,20 @@
 
   <!-- HEADER -->
   <div class="section-header">
-    <span style="color:#3B82F6;">Відгуки</span> клієнтів — <span style="color:#22C55E;">реальні роботи</span>, реальні <span style="color:#F59E0B;">враження</span>
+    <span style="color:#3B82F6;">Client Reviews</span> — <span style="color:#22C55E;">real work</span>, real <span style="color:#F59E0B;">impressions</span>
   </div>
 
   <!-- FORM -->
   <div class="form-card">
-    <div class="form-title">Залишити відгук</div>
+    <div class="form-title">Leave a Review</div>
 
     <div class="form-row">
       <div class="field-group">
-        <label class="field-label">Ваше ім'я</label>
-        <input class="field-input" id="rev-name" type="text" placeholder="Наприклад: Олексій">
+        <label class="field-label">Your Name</label>
+        <input class="field-input" id="rev-name" type="text" placeholder="E.g.: Alex">
       </div>
       <div class="field-group">
-        <label class="field-label">Оцінка</label>
+        <label class="field-label">Rating</label>
         <div class="stars-row" id="stars-row">
           <button class="star-btn" data-val="1">★</button>
           <button class="star-btn" data-val="2">★</button>
@@ -321,32 +321,32 @@
     </div>
 
     <div class="field-group">
-      <label class="field-label">Коментар до вашого замовлення</label>
-      <textarea class="field-textarea" id="rev-comment" placeholder="Розкажіть що сподобалось, яка тематика, наскільки задоволені результатом..."></textarea>
+      <label class="field-label">Comment about your order</label>
+      <textarea class="field-textarea" id="rev-comment" placeholder="Tell us what you liked, the topic, how satisfied you are with the result..."></textarea>
     </div>
 
     <div class="field-group">
-      <label class="field-label">Прикріпити фото (мініатюра яку отримали)</label>
+      <label class="field-label">Attach a photo (thumbnail you received)</label>
       <div class="upload-zone" id="upload-zone">
         <input type="file" id="rev-file" accept="image/*">
         <span class="upload-icon">📎</span>
-        <div class="upload-text">Клікніть або перетягніть фото сюди<br><span>підтримуються JPG, PNG, WEBP</span></div>
+        <div class="upload-text">Click or drag a photo here<br><span>JPG, PNG, WEBP supported</span></div>
         <img class="preview-img" id="preview-img" alt="preview">
       </div>
     </div>
 
-    <button class="submit-btn" id="submit-btn" onclick="submitReview()">ОПУБЛІКУВАТИ ВІДГУК</button>
-    <div class="success-msg" id="success-msg">✓ Дякуємо! Ваш відгук опубліковано.</div>
+    <button class="submit-btn" id="submit-btn" onclick="submitReview()">PUBLISH REVIEW</button>
+    <div class="success-msg" id="success-msg">✓ Thank you! Your review has been published.</div>
   </div>
 
   <!-- REVIEWS SECTION TITLE -->
   <div class="section-header" style="font-size:22px;">
-    <span style="color:#22C55E;">Відгуки</span> від замовників:
+    <span style="color:#22C55E;">Reviews</span> from clients:
   </div>
 
   <!-- REVIEWS GRID -->
   <div class="reviews-grid" id="reviews-grid">
-    <div class="no-reviews" id="no-reviews">Поки що немає відгуків. Будьте першим! 👆</div>
+    <div class="no-reviews" id="no-reviews">No reviews yet. Be the first! 👆</div>
   </div>
 
 </div>
@@ -413,7 +413,7 @@
     const noRev = document.getElementById('no-reviews');
 
     if (reviews.length === 0) {
-      grid.innerHTML = '<div class="no-reviews" id="no-reviews">Поки що немає відгуків. Будьте першим! 👆</div>';
+      grid.innerHTML = '<div class="no-reviews" id="no-reviews">No reviews yet. Be the first! 👆</div>';
       return;
     }
 
@@ -459,7 +459,7 @@
       comment,
       stars: selectedStars,
       image: imageBase64 || null,
-      date: new Date().toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' })
+      date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
     };
 
     const reviews = loadReviews();
