@@ -287,7 +287,7 @@
   const CLOUD_NAME   = 'du4wnt7zj';
   const CLOUD_PRESET = 'UnSign';
   const JB_KEY       = '$2a$10$sdq4HxO.pWyE9dt.N2MX2.2otj94euVS1fXvUeoqT0Xc5HJ2EZj1.';
-  const BIN_LS_KEY   = 'mykhailo_bin_id_v2';
+  const BIN_ID       = '69e89120856a6821895dc3f7';
   const MAX_BYTES    = 5 * 1024 * 1024;
 
   let selectedStars = 0;
@@ -342,29 +342,8 @@
   });
 
   // ── JSONBIN ──
-  async function getBinId() {
-    const cached = localStorage.getItem(BIN_LS_KEY);
-    if (cached) return cached;
-
-    const res = await fetch('https://api.jsonbin.io/v3/b', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Master-Key': JB_KEY,
-        'X-Bin-Name': 'mykhailo-reviews',
-        'X-Bin-Private': 'false'
-      },
-      body: JSON.stringify({ reviews: [] })
-    });
-    const data = await res.json();
-    const id = data.metadata.id;
-    localStorage.setItem(BIN_LS_KEY, id);
-    return id;
-  }
-
   async function loadReviews() {
-    const id  = await getBinId();
-    const res = await fetch(`https://api.jsonbin.io/v3/b/${id}/latest`, {
+    const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
       headers: { 'X-Master-Key': JB_KEY }
     });
     const data = await res.json();
@@ -372,8 +351,7 @@
   }
 
   async function saveReviews(reviews) {
-    const id = await getBinId();
-    await fetch(`https://api.jsonbin.io/v3/b/${id}`, {
+    await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json', 'X-Master-Key': JB_KEY },
       body: JSON.stringify({ reviews })
