@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,6 @@
     gap: 24px;
   }
 
-  /* ── HEADER ── */
   .section-header {
     background: #0F172A;
     border-radius: 16px;
@@ -33,7 +32,6 @@
     font-size: 28px;
   }
 
-  /* ── FORM CARD ── */
   .form-card {
     background: #0F172A;
     border-radius: 16px;
@@ -44,23 +42,9 @@
     gap: 20px;
   }
 
-  .form-title {
-    font-size: 26px;
-    color: #3B82F6;
-    margin-bottom: 4px;
-  }
-
-  .form-row {
-    display: flex;
-    gap: 16px;
-  }
-
-  .field-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1;
-  }
+  .form-title { font-size: 26px; color: #3B82F6; margin-bottom: 4px; }
+  .form-row { display: flex; gap: 16px; }
+  .field-group { display: flex; flex-direction: column; gap: 8px; flex: 1; }
 
   .field-label {
     font-size: 14px;
@@ -87,13 +71,8 @@
     border-color: #3B82F6;
     box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
   }
+  .field-textarea { resize: vertical; min-height: 110px; }
 
-  .field-textarea {
-    resize: vertical;
-    min-height: 110px;
-  }
-
-  /* Image upload */
   .upload-zone {
     background: #1E293B;
     border: 2px dashed rgba(59,130,246,0.3);
@@ -104,27 +83,12 @@
     transition: border-color 0.2s, background 0.2s;
     position: relative;
   }
-  .upload-zone:hover {
-    border-color: #3B82F6;
-    background: rgba(59,130,246,0.05);
-  }
+  .upload-zone:hover { border-color: #3B82F6; background: rgba(59,130,246,0.05); }
   .upload-zone input[type="file"] {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
   }
-  .upload-icon {
-    font-size: 36px;
-    margin-bottom: 8px;
-    display: block;
-  }
-  .upload-text {
-    color: #64748B;
-    font-size: 15px;
-  }
+  .upload-icon { font-size: 36px; margin-bottom: 8px; display: block; }
+  .upload-text { color: #64748B; font-size: 15px; }
   .upload-text span { color: #3B82F6; }
 
   .preview-img {
@@ -137,12 +101,11 @@
     display: none;
   }
 
-  /* Stars */
-  .stars-row {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
+  .file-limit { font-size: 13px; color: #475569; margin-top: 6px; }
+  .file-limit.error { color: #EF4444; }
+  .file-limit.ok { color: #22C55E; }
+
+  .stars-row { display: flex; gap: 8px; align-items: center; }
   .star-btn {
     font-size: 28px;
     cursor: pointer;
@@ -156,9 +119,9 @@
   .star-btn:hover,
   .star-btn.active { color: #F59E0B; transform: scale(1.15); }
 
-  /* Submit */
+  .submit-row { display: flex; align-items: center; gap: 14px; }
+
   .submit-btn {
-    display: inline-block;
     padding: 16px 36px;
     font-family: 'Oswald', sans-serif;
     font-size: 18px;
@@ -169,29 +132,37 @@
     cursor: pointer;
     box-shadow: 0 0 12px rgba(59,130,246,0.3);
     transition: box-shadow 0.3s, transform 0.2s;
-    align-self: flex-start;
   }
-  .submit-btn:hover {
-    box-shadow: 0 0 24px rgba(59,130,246,0.7);
-    transform: scale(1.03);
-  }
-  .submit-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-  }
+  .submit-btn:hover { box-shadow: 0 0 24px rgba(59,130,246,0.7); transform: scale(1.03); }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
 
-  .success-msg {
+  .spinner {
     display: none;
-    color: #22C55E;
-    font-size: 18px;
+    width: 22px; height: 22px;
+    border: 3px solid rgba(59,130,246,0.25);
+    border-top-color: #3B82F6;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .status-msg {
+    display: none;
+    font-size: 17px;
     padding: 14px 20px;
-    background: rgba(34,197,94,0.08);
-    border: 1px solid rgba(34,197,94,0.25);
     border-radius: 10px;
   }
+  .status-msg.success {
+    color: #22C55E;
+    background: rgba(34,197,94,0.08);
+    border: 1px solid rgba(34,197,94,0.25);
+  }
+  .status-msg.error {
+    color: #EF4444;
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.25);
+  }
 
-  /* ── REVIEWS GRID ── */
   .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -218,55 +189,19 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .review-thumb {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    display: block;
-  }
-
-  .review-body {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex: 1;
-  }
-
-  .review-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  .review-name {
-    font-size: 20px;
-    color: #3B82F6;
-    font-weight: 600;
-  }
-
-  .review-stars {
-    font-size: 18px;
-    letter-spacing: 2px;
-    color: #F59E0B;
-  }
-
-  .review-comment {
-    font-size: 16px;
-    color: #CBD5E1;
-    line-height: 1.6;
-  }
-
+  .review-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+  .review-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .review-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .review-name { font-size: 20px; color: #3B82F6; font-weight: 600; }
+  .review-stars { font-size: 18px; letter-spacing: 2px; color: #F59E0B; }
+  .review-comment { font-size: 16px; color: #CBD5E1; line-height: 1.6; }
   .review-date {
-    font-size: 13px;
-    color: #475569;
-    margin-top: auto;
-    padding-top: 8px;
+    font-size: 13px; color: #475569;
+    margin-top: auto; padding-top: 8px;
     border-top: 1px solid rgba(255,255,255,0.05);
   }
 
-  .no-reviews {
+  .state-box {
     text-align: center;
     color: #475569;
     font-size: 18px;
@@ -276,30 +211,25 @@
     box-shadow: 0 0 0 1px rgba(59,130,246,0.06);
   }
 
-  /* ── RESPONSIVE ── */
   @media (min-width: 600px) and (max-width: 1024px) {
     .section-header, .form-card { padding: 32px; }
     .form-row { flex-direction: column; }
   }
-
   @media (max-width: 599px) {
     .section-header, .form-card { padding: 24px; }
     .form-row { flex-direction: column; }
-    .submit-btn { align-self: stretch; text-align: center; }
+    .submit-btn { width: 100%; }
     .reviews-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
-
 <div class="reviews-wrapper">
 
-  <!-- HEADER -->
   <div class="section-header">
     <span style="color:#3B82F6;">Client Reviews</span> — <span style="color:#22C55E;">real work</span>, real <span style="color:#F59E0B;">impressions</span>
   </div>
 
-  <!-- FORM -->
   <div class="form-card">
     <div class="form-title">Leave a Review</div>
 
@@ -326,167 +256,249 @@
     </div>
 
     <div class="field-group">
-      <label class="field-label">Attach a photo (thumbnail you received)</label>
-      <div class="upload-zone" id="upload-zone">
+      <label class="field-label">Attach a photo — thumbnail you received (max 5MB)</label>
+      <div class="upload-zone">
         <input type="file" id="rev-file" accept="image/*">
-        <span class="upload-icon">📎</span>
-        <div class="upload-text">Click or drag a photo here<br><span>JPG, PNG, WEBP supported</span></div>
+        <span class="upload-icon" id="upload-icon">📎</span>
+        <div class="upload-text" id="upload-text">Click or drag a photo here<br><span>JPG, PNG, WEBP supported</span></div>
         <img class="preview-img" id="preview-img" alt="preview">
       </div>
+      <div class="file-limit" id="file-limit">Optional — you can leave a review without a photo</div>
     </div>
 
-    <button class="submit-btn" id="submit-btn" onclick="submitReview()">PUBLISH REVIEW</button>
-    <div class="success-msg" id="success-msg">✓ Thank you! Your review has been published.</div>
+    <div class="submit-row">
+      <button class="submit-btn" id="submit-btn" onclick="submitReview()">PUBLISH REVIEW</button>
+      <div class="spinner" id="spinner"></div>
+    </div>
+    <div class="status-msg" id="status-msg"></div>
   </div>
 
-  <!-- REVIEWS SECTION TITLE -->
   <div class="section-header" style="font-size:22px;">
     <span style="color:#22C55E;">Reviews</span> from clients:
   </div>
 
-  <!-- REVIEWS GRID -->
   <div class="reviews-grid" id="reviews-grid">
-    <div class="no-reviews" id="no-reviews">No reviews yet. Be the first! 👆</div>
+    <div class="state-box">Loading reviews...</div>
   </div>
 
 </div>
-
 <script>
-  // ── STATE ──
+  // ── KEYS ──
+  const CLOUD_NAME   = 'du4wnt7zj';
+  const CLOUD_PRESET = 'UnSign';
+  const JB_KEY       = '$2a$10$sdq4HxO.pWyE9dt.N2MX2.2otj94euVS1fXvUeoqT0Xc5HJ2EZj1.';
+  const BIN_LS_KEY   = 'mykhailo_bin_id_v2';
+  const MAX_BYTES    = 5 * 1024 * 1024;
+
   let selectedStars = 0;
-  let imageBase64 = null;
-  const STORAGE_KEY = 'mykhailo_reviews_v1';
+  let selectedFile  = null;
 
   // ── STARS ──
   document.querySelectorAll('.star-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      selectedStars = parseInt(btn.dataset.val);
-      document.querySelectorAll('.star-btn').forEach((b, i) => {
-        b.classList.toggle('active', i < selectedStars);
-      });
+      selectedStars = +btn.dataset.val;
+      document.querySelectorAll('.star-btn').forEach((b,i) =>
+        b.classList.toggle('active', i < selectedStars));
     });
     btn.addEventListener('mouseover', () => {
-      const v = parseInt(btn.dataset.val);
-      document.querySelectorAll('.star-btn').forEach((b, i) => {
-        b.style.color = i < v ? '#F59E0B' : '';
-      });
+      const v = +btn.dataset.val;
+      document.querySelectorAll('.star-btn').forEach((b,i) =>
+        b.style.color = i < v ? '#F59E0B' : '');
     });
     btn.addEventListener('mouseout', () => {
-      document.querySelectorAll('.star-btn').forEach((b, i) => {
-        b.style.color = i < selectedStars ? '#F59E0B' : '';
-      });
+      document.querySelectorAll('.star-btn').forEach((b,i) =>
+        b.style.color = i < selectedStars ? '#F59E0B' : '');
     });
   });
 
-  // ── FILE UPLOAD ──
+  // ── FILE ──
   document.getElementById('rev-file').addEventListener('change', function() {
     const file = this.files[0];
+    const lim  = document.getElementById('file-limit');
     if (!file) return;
+
+    if (file.size > MAX_BYTES) {
+      lim.textContent = '✗ File too large! Max 5MB.';
+      lim.className = 'file-limit error';
+      selectedFile = null;
+      this.value = '';
+      document.getElementById('preview-img').style.display = 'none';
+      return;
+    }
+
+    selectedFile = file;
+    lim.textContent = `✓ ${(file.size/1024/1024).toFixed(2)} MB — ready`;
+    lim.className = 'file-limit ok';
+
     const reader = new FileReader();
     reader.onload = e => {
-      imageBase64 = e.target.result;
       const img = document.getElementById('preview-img');
-      img.src = imageBase64;
+      img.src = e.target.result;
       img.style.display = 'block';
-      document.querySelector('.upload-text').style.display = 'none';
-      document.querySelector('.upload-icon').style.display = 'none';
+      document.getElementById('upload-text').style.display = 'none';
+      document.getElementById('upload-icon').style.display = 'none';
     };
     reader.readAsDataURL(file);
   });
 
-  // ── LOAD REVIEWS ──
-  function loadReviews() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch { return []; }
+  // ── JSONBIN ──
+  async function getBinId() {
+    const cached = localStorage.getItem(BIN_LS_KEY);
+    if (cached) return cached;
+
+    const res = await fetch('https://api.jsonbin.io/v3/b', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': JB_KEY,
+        'X-Bin-Name': 'mykhailo-reviews',
+        'X-Bin-Private': 'false'
+      },
+      body: JSON.stringify({ reviews: [] })
+    });
+    const data = await res.json();
+    const id = data.metadata.id;
+    localStorage.setItem(BIN_LS_KEY, id);
+    return id;
   }
 
-  function saveReviews(reviews) {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews)); } catch {}
+  async function loadReviews() {
+    const id  = await getBinId();
+    const res = await fetch(`https://api.jsonbin.io/v3/b/${id}/latest`, {
+      headers: { 'X-Master-Key': JB_KEY }
+    });
+    const data = await res.json();
+    return data.record.reviews || [];
+  }
+
+  async function saveReviews(reviews) {
+    const id = await getBinId();
+    await fetch(`https://api.jsonbin.io/v3/b/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'X-Master-Key': JB_KEY },
+      body: JSON.stringify({ reviews })
+    });
+  }
+
+  // ── CLOUDINARY ──
+  async function uploadImage(file) {
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('upload_preset', CLOUD_PRESET);
+    const res  = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
+      method: 'POST', body: fd
+    });
+    const data = await res.json();
+    if (!data.secure_url) throw new Error('Cloudinary error');
+    return data.secure_url;
   }
 
   // ── RENDER ──
-  function renderReviews() {
-    const reviews = loadReviews();
-    const grid = document.getElementById('reviews-grid');
-    const noRev = document.getElementById('no-reviews');
-
-    if (reviews.length === 0) {
-      grid.innerHTML = '<div class="no-reviews" id="no-reviews">No reviews yet. Be the first! 👆</div>';
-      return;
-    }
-
-    grid.innerHTML = reviews.slice().reverse().map((r, i) => `
-      <div class="review-card" style="animation-delay:${i * 0.07}s">
-        ${r.image ? `<img class="review-thumb" src="${r.image}" alt="thumbnail">` : ''}
-        <div class="review-body">
-          <div class="review-header">
-            <span class="review-name">${escHtml(r.name)}</span>
-            <span class="review-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</span>
-          </div>
-          ${r.comment ? `<div class="review-comment">${escHtml(r.comment)}</div>` : ''}
-          <div class="review-date">${r.date}</div>
-        </div>
-      </div>
-    `).join('');
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  function escHtml(str) {
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  function renderReviews(reviews) {
+    const grid = document.getElementById('reviews-grid');
+    if (!reviews.length) {
+      grid.innerHTML = '<div class="state-box">No reviews yet. Be the first! 👆</div>';
+      return;
+    }
+    grid.innerHTML = reviews.slice().reverse().map((r,i) => `
+      <div class="review-card" style="animation-delay:${i*0.07}s">
+        ${r.image ? `<img class="review-thumb" src="${esc(r.image)}" alt="thumbnail">` : ''}
+        <div class="review-body">
+          <div class="review-header">
+            <span class="review-name">${esc(r.name)}</span>
+            <span class="review-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</span>
+          </div>
+          ${r.comment ? `<div class="review-comment">${esc(r.comment)}</div>` : ''}
+          <div class="review-date">${esc(r.date)}</div>
+        </div>
+      </div>`).join('');
+  }
+
+  function showStatus(type, text) {
+    const el = document.getElementById('status-msg');
+    el.className = `status-msg ${type}`;
+    el.textContent = text;
+    el.style.display = 'block';
+    setTimeout(() => el.style.display = 'none', 4000);
   }
 
   // ── SUBMIT ──
-  function submitReview() {
-    const name = document.getElementById('rev-name').value.trim();
+  async function submitReview() {
+    const name    = document.getElementById('rev-name').value.trim();
     const comment = document.getElementById('rev-comment').value.trim();
 
     if (!name) {
-      document.getElementById('rev-name').focus();
-      document.getElementById('rev-name').style.borderColor = '#EF4444';
-      setTimeout(() => document.getElementById('rev-name').style.borderColor = '', 1500);
+      const el = document.getElementById('rev-name');
+      el.style.borderColor = '#EF4444'; el.focus();
+      setTimeout(() => el.style.borderColor = '', 1500);
       return;
     }
-    if (selectedStars === 0) {
-      document.getElementById('stars-row').style.outline = '2px solid #EF4444';
-      document.getElementById('stars-row').style.borderRadius = '6px';
-      setTimeout(() => document.getElementById('stars-row').style.outline = '', 1500);
+    if (!selectedStars) {
+      const el = document.getElementById('stars-row');
+      el.style.outline = '2px solid #EF4444'; el.style.borderRadius = '6px';
+      setTimeout(() => el.style.outline = '', 1500);
       return;
     }
 
-    const review = {
-      name,
-      comment,
-      stars: selectedStars,
-      image: imageBase64 || null,
-      date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
-    };
+    const btn     = document.getElementById('submit-btn');
+    const spinner = document.getElementById('spinner');
+    btn.disabled = true;
+    spinner.style.display = 'block';
 
-    const reviews = loadReviews();
-    reviews.push(review);
-    saveReviews(reviews);
+    try {
+      let imageUrl = null;
+      if (selectedFile) {
+        imageUrl = await uploadImage(selectedFile);
+      }
 
-    // reset form
-    document.getElementById('rev-name').value = '';
-    document.getElementById('rev-comment').value = '';
-    document.getElementById('rev-file').value = '';
-    document.getElementById('preview-img').style.display = 'none';
-    document.getElementById('preview-img').src = '';
-    document.querySelector('.upload-text').style.display = '';
-    document.querySelector('.upload-icon').style.display = '';
-    selectedStars = 0;
-    imageBase64 = null;
-    document.querySelectorAll('.star-btn').forEach(b => { b.classList.remove('active'); b.style.color = ''; });
+      const reviews = await loadReviews();
+      reviews.push({
+        name, comment,
+        stars: selectedStars,
+        image: imageUrl,
+        date: new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' })
+      });
+      await saveReviews(reviews);
 
-    const msg = document.getElementById('success-msg');
-    msg.style.display = 'block';
-    setTimeout(() => msg.style.display = 'none', 3000);
+      // reset
+      document.getElementById('rev-name').value    = '';
+      document.getElementById('rev-comment').value = '';
+      document.getElementById('rev-file').value    = '';
+      document.getElementById('preview-img').style.display = 'none';
+      document.getElementById('preview-img').src   = '';
+      document.getElementById('upload-text').style.display = '';
+      document.getElementById('upload-icon').style.display = '';
+      document.getElementById('file-limit').textContent = 'Optional — you can leave a review without a photo';
+      document.getElementById('file-limit').className   = 'file-limit';
+      selectedStars = 0; selectedFile = null;
+      document.querySelectorAll('.star-btn').forEach(b => { b.classList.remove('active'); b.style.color=''; });
 
-    renderReviews();
+      showStatus('success', '✓ Thank you! Your review has been published.');
+      renderReviews(reviews);
+
+    } catch(e) {
+      console.error(e);
+      showStatus('error', '✗ Something went wrong. Please try again.');
+    } finally {
+      btn.disabled = false;
+      spinner.style.display = 'none';
+    }
   }
 
   // ── INIT ──
-  renderReviews();
+  (async () => {
+    try {
+      const reviews = await loadReviews();
+      renderReviews(reviews);
+    } catch(e) {
+      document.getElementById('reviews-grid').innerHTML =
+        '<div class="state-box">Could not load reviews. Please refresh the page.</div>';
+    }
+  })();
 </script>
 </body>
 </html>
